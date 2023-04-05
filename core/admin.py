@@ -1,7 +1,7 @@
 from django.contrib import admin
 from decimal import Decimal
 
-from .models import Account, BudgetCategorie
+from .models import Account, BudgetCategorie, Transaction
 
 
 @admin.register(Account)
@@ -43,3 +43,7 @@ class AccountAdmin(admin.ModelAdmin):
         return total_amount
 
     total_budget_amount.short_description = "Total Budget"
+
+@admin.register(Transaction)
+class AccountAdmin(admin.ModelAdmin):
+    list_display = ("description", "trasaction_date")

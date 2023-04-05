@@ -39,4 +39,13 @@ class BudgetCategorie(models.Model):
 
     def __str__(self)-> str:
         return f"{self.title}: {self.budget}"
+
+class Transaction(models.Model):
+    description = models.CharField(max_length=200, help_text='store name')
+    trasaction_date = models.DateField()
+    account = models.OneToOneField(Account, on_delete=models.CASCADE)
+    budget_categorie = models.ForeignKey(BudgetCategorie, on_delete=models.CASCADE)
+
+    def __str__(self) -> str:
+        return f"{self.description} : {self.trasaction_date}"
     
