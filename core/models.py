@@ -3,42 +3,32 @@ from django.db import models
 
 
 class Account(models.Model):
-    LIST = [
-        ('Account Options',(
-                    ('M-Pesa', 'M-Pesa'),
-                    ('Bank', 'Bank'),
-                    ('Credit_Card', 'Credit_Card'),
-                )
-            
-        ),
-        
-    ]
-
-    TYPE_OF_INCOME = [
-        ('Account Options',(
-                    ('salary', 'salary'),
-                    ('saving', 'saving'),
-                    ('investment', 'investment'),
-                )
-        ), 
-    ]
-    account_name = models.CharField(max_length=50, choices=LIST)
-    saving_list = models.CharField(max_length=50, choices=TYPE_OF_INCOME)
-    deposited_amount = models.DecimalField(max_digits=15, decimal_places=2)
+    name = models.CharField(max_length=255)
+    ACCOUNT_TYPES = (
+        ('Checking', 'Checking'),
+        ('Savings', 'Savings'),
+        ('Credit Card', 'Credit Card'),
+        ('Cash', 'Cash'),
+        ('Investment', 'Investment'),
+        ('M-Pesa', 'M-Pesa'),
+    )
+    account_type = models.CharField(max_length=255, choices=ACCOUNT_TYPES)
+    starting_balance = models.DecimalField(max_digits=10, decimal_places=2)
     deposited_date = models.DateField()
 
 
     def __str__(self)-> str:
-        return f"{self.account_name}: {self.deposited_amount}"
+        return f"{self.name}: {self.account_type}"
 
 
 class BudgetCategorie(models.Model):
-    title = models.CharField(max_length=100, help_text='e.g. Utilities, groceries, etc.')
-    budget = models.DecimalField(max_digits=15, decimal_places=2)
-    date_budgeted = models.DateField()
+    name = models.CharField(max_length=255)
+    description = models.TextField(blank=True)
+    budget_amount = models.DecimalField(max_digits=10, decimal_places=2)
+    budget_date = models.DateTimeField()
 
     def __str__(self)-> str:
-        return f"{self.title}: {self.budget}"
+        return f"{self.name}: {self.budget_amount}"
 
 class Transaction(models.Model):
     description = models.CharField(max_length=200, help_text='store name')

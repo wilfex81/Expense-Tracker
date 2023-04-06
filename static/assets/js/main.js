@@ -291,3 +291,20 @@
   new PureCounter();
 
 })()
+
+
+
+/*
+* datepicker using jQuery UI 
+*/
+$(document).ready(function() {
+  $('#datepicker').datepicker({
+    dateFormat: 'yy-mm-dd', // Set date format
+    changeMonth: true, // Enable month dropdown
+    changeYear: true // Enable year dropdown
+  });
+});
+
+// Set the minimum date to today
+let today = new Date().toISOString().split("T")[0];
+document.getElementById("datepicker").setAttribute("min", today);

@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Expense Tracker | Records</title>
+  <title>Expense Tracker | Budget Categories</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -28,6 +28,11 @@
   <!-- Template Main CSS File -->
   <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
 
+  <!-- Datepicker scripts -->
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+  
   <!-- =======================================================
   * Template Name: Gp
   * Updated: Mar 10 2023 with Bootstrap v5.2.3
@@ -36,7 +41,6 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 </head>
-
 <body>
 
   <!-- ======= Header ======= -->
@@ -79,9 +83,49 @@
 
     <section class="inner-page">
       <div class="container">
-        <p>
-          Budget Categories Page
-        </p>
+  <h1 id="budget">Budget Categories</h1>
+  <p>Total Budget: Ksh {{ total_budget }}</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Budget Amount</th>
+        <th>Budget Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for category in categories %}
+        <tr>
+          <td>{{ category.name }}</td>
+          <td>{{ category.description }}</td>
+          <td>{{ category.budget_amount }}</td>
+          <td>{{ category.budget_date }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <br><br>
+  <h2>Create a New Category</h2>
+<br><br>
+  <form method="post">
+    {% csrf_token %}
+    <label for="name">Name:</label>
+    <input type="text" name="name" required id="inputdetails">
+    <br>
+    <label for="description">Description:</label>
+    <textarea name="description"></textarea>
+    <br>
+    <label for="budget_amount">Budget Amount:</label>
+    <input type="number" name="budget_amount" required id="inputdetails">
+    <br>
+    <label for="budget_date">Date Budgeted:</label>
+    <div class="input-group">
+      <input type="text" class="form-control" id="datepicker" name="date" placeholder="MM/DD/YYYY" aria-label="Date">
+    </div>
+    <br><br>
+    <button type="submit" id="submitbutton">Create Category</button>
+  </form>
       </div>
     </section>
 

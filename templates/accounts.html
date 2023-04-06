@@ -28,6 +28,12 @@
   <!-- Template Main CSS File -->
   <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
 
+
+  <!-- Datepicker scripts -->
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    
   <!-- =======================================================
   * Template Name: Gp
   * Updated: Mar 10 2023 with Bootstrap v5.2.3
@@ -79,9 +85,37 @@
 
     <section class="inner-page">
       <div class="container">
-        <p>
-         Accounts Page
-        </p>
+        <h1>My Accounts</h1>
+        <p>Total Balance: Ksh. {{ total_balance }}</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Deposited Date</th>
+              <th>Starting Balance</th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            {% for account in accounts %}
+              <tr>
+                <td>{{ account.name }}</td>
+                <td>{{ account.account_type }}</td>
+                <td>{{ account.deposited_date }}</td>
+                <td>Ksh. {{ account.starting_balance|floatformat:2 }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <h1>Create Account</h1>
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <br><br>
+    <button type="submit" id="submitbutton">Create Account</button>
+  </form>
       </div>
     </section>
 
