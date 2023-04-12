@@ -1555,8 +1555,10 @@ section {
 *Date
 */
 #datepicker {
-  font-size: 14px; /* adjust as needed */
-  padding: 0.2rem 0.5rem; /* adjust as needed */
+  font-size: 14px;
+  /* adjust as needed */
+  padding: 0.2rem 0.5rem;
+  /* adjust as needed */
 }
 
 /* reduce the size of the datepicker */
@@ -1583,7 +1585,8 @@ table {
   width: 100%;
 }
 
-th, td {
+th,
+td {
   padding: 12px;
   text-align: left;
   border-bottom: 1px solid #ddd;
@@ -1599,7 +1602,8 @@ label {
   margin-bottom: 10px;
 }
 
-#inputdetails, textarea {
+#inputdetails,
+textarea {
   padding: 10px;
   margin-bottom: 20px;
   width: 100%;
@@ -1619,4 +1623,54 @@ label {
 
 #submitbutton:hover {
   background-color: #3e8e41;
+}
+
+/*
+*login css
+*/
+form {
+  background-color: #ffffff;
+  border-radius: 10px;
+  /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);*/
+  margin: 50px auto;
+  max-width: 500px;
+  padding: 50px;
+}
+
+input {
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+  display: block;
+  font-size: 16px;
+  margin-bottom: 20px;
+  padding: 10px;
+  width: 100%;
+}
+
+input[type="submit"] {
+  background-color: #3498db;
+  color: #ffffff;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s ease-in-out;
+}
+
+input[type="submit"]:hover {
+  background-color: #2980b9;
+}
+
+label {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.form-group {
+  margin-bottom: 30px;
+}
+
+.form-group:last-of-type {
+  margin-bottom: 0;
 }

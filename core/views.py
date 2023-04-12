@@ -4,13 +4,49 @@ from .models import BudgetCategorie, Account
 from datetime import datetime
 from django.db.models import Sum
 from .forms import AccountForm
+from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
+from .forms import SignUpForm
 
 
 def home(request):
     return render(request, 'ladingpage.html', {})
 
 def get_started(request):
-    return render(request, 'index.html', {})
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+        #Auth
+        user = authenticate(request, username = username, password = password)
+        if user is not None:
+            login(request, user)
+            messages.success(request, "Logged in sucessfully")
+            return redirect('accounts')
+    else:
+        return render(request, 'login.html', {})
+    return render(request, 'login.html', {})
+
+def signup(request):
+    if request.method == 'POST':
+        form  = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            #AUTH and LOGIN
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password1']
+            user = authenticate(username = username, password = password)
+            login(request, user)
+            messages.success(request, 'Sign up was sucessfull')
+            return redirect('getstarted')
+    else:
+        form = SignUpForm()
+        return render(request, 'signup.html',{'form' : form})
+    return render(request, 'signup.html', {'form' : form})
+
+def logout_user(request):
+    logout(request)
+    messages.success(request, 'You have been logged out.....')
+    return redirect('getstarted')
 
 def budget_categories(request):
     if request.method == 'POST':
