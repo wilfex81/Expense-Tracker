@@ -13,7 +13,7 @@ class Account(models.Model):
         ('M-Pesa', 'M-Pesa'),
     )
     account_type = models.CharField(max_length=255, choices=ACCOUNT_TYPES)
-    starting_balance = models.DecimalField(max_digits=10, decimal_places=2)
+    deposited_amount = models.DecimalField(max_digits=10, decimal_places=2)
     deposited_date = models.DateField()
 
 
@@ -31,11 +31,14 @@ class BudgetCategorie(models.Model):
         return f"{self.name}: {self.budget_amount}"
 
 class Transaction(models.Model):
-    description = models.CharField(max_length=200, help_text='store name')
-    trasaction_date = models.DateField()
-    account = models.OneToOneField(Account, on_delete=models.CASCADE)
+    date_recorded = models.DateField()
+    transaction_date = models.DateField()
+    description = models.CharField(max_length=255)
+    cheque_number = models.CharField(max_length=255, blank=True)
+    amount_spent = models.DecimalField(max_digits=10, decimal_places=2)
+    account = models.ForeignKey(Account, on_delete=models.CASCADE)
     budget_categorie = models.ForeignKey(BudgetCategorie, on_delete=models.CASCADE)
 
     def __str__(self) -> str:
-        return f"{self.description} : {self.trasaction_date}"
+        return f"{self.transaction_date}: {self.description} : {self.amount_spent}"
     

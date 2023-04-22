@@ -116,7 +116,7 @@
 
     <main id="main">
       <!-- ======= Breadcrumbs ======= -->
-      <section class="breadcrumbs">
+      <section class="breadcrumbs" id="loginbreadcrumbs">
         <div class="container">
           <div class="d-flex justify-content-between align-items-center">
             <h2>Login/SignUp</h2>
@@ -146,7 +146,7 @@
           </div>
           {% endfor %} {% endif %}
           <div class="container">
-            <form method="POST" action="">
+            <form method="POST" action="" id="loginform">
               {% csrf_token %}
               <div class="mb-3">
                 <input
@@ -166,11 +166,11 @@
                   name="password"
                   ,
                   placeholder="password"
-                  required
+                  required id="logininput"
                 />
               </div>
               <br />
-              <button type="submit" class="btn btn-primary">Login</button>
+              <button type="submit" class="btn btn-primary" id="loginbutton">Login</button>
               <span>Don't have an account?<a href="{% url 'signup' %}"> SignUp</a></span>
             </form>
           </div>

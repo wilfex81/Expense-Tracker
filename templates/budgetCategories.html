@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 {% load static %}
+{% load filters %}
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -85,6 +86,7 @@
     <section class="inner-page">
       <div class="container">
   <h1 id="budget">Budget Categories</h1>
+  {% with current_week_num=now|date:"Y-m-d" %}
   <p>Total Budget: Ksh {{ total_budget }}</p>
   <table>
     <thead>
@@ -96,7 +98,8 @@
       </tr>
     </thead>
     <tbody>
-      {% for category in categories %}
+      {% for category in categories%}
+      <!-- |filter_by_week_num:current_week_num  -->
         <tr>
           <td>{{ category.name }}</td>
           <td>{{ category.description }}</td>
@@ -106,6 +109,8 @@
       {% endfor %}
     </tbody>
   </table>
+{% endwith %}
+
   <br><br>
   <h2>Create a New Category</h2>
 <br><br>

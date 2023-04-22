@@ -94,7 +94,7 @@
               <th>Name</th>
               <th>Type</th>
               <th>Deposited Date</th>
-              <th>Starting Balance</th>
+              <th>Deposited Amount </th>
               
             </tr>
           </thead>
@@ -104,7 +104,7 @@
                 <td>{{ account.name }}</td>
                 <td>{{ account.account_type }}</td>
                 <td>{{ account.deposited_date }}</td>
-                <td>Ksh. {{ account.starting_balance|floatformat:2 }}</td>
+                <td>Ksh. {{ account.deposited_amount|floatformat:2 }}</td>
               </tr>
             {% endfor %}
           </tbody>

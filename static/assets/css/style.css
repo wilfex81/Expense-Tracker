@@ -1383,7 +1383,11 @@ section {
 @media (max-width: 992px) {
   .breadcrumbs {
     margin-top: 68px;
+
   }
+  /* #loginbreadcrumbs{
+    margin-top: 68px;
+  } */
 
   .breadcrumbs .d-flex {
     display: block !important;
@@ -1628,7 +1632,7 @@ textarea {
 /*
 *login css
 */
-form {
+#loginform {
   background-color: #ffffff;
   border-radius: 10px;
   /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);*/
@@ -1637,7 +1641,7 @@ form {
   padding: 50px;
 }
 
-input {
+#logininput {
   border: none;
   border-radius: 3px;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
@@ -1648,7 +1652,7 @@ input {
   width: 100%;
 }
 
-input[type="submit"] {
+#logininput[type="submit"] {
   background-color: #3498db;
   color: #ffffff;
   cursor: pointer;
@@ -1656,7 +1660,7 @@ input[type="submit"] {
   transition: background-color 0.2s ease-in-out;
 }
 
-input[type="submit"]:hover {
+#logininput[type="submit"]:hover {
   background-color: #2980b9;
 }
 
