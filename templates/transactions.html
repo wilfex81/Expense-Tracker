@@ -86,7 +86,7 @@
 
     <section class="inner-page">
       <div class="container">
-        <form method="post">
+        <form action="{% url 'records' %}" method="post">
           {% csrf_token %}
           <div class="mb-3">
             <label for="transaction-date" class="form-label">Date Recorded</label>

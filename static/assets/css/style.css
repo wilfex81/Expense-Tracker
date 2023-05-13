@@ -1385,6 +1385,7 @@ section {
     margin-top: 68px;
 
   }
+
   /* #loginbreadcrumbs{
     margin-top: 68px;
   } */
@@ -1677,4 +1678,10 @@ label {
 
 .form-group:last-of-type {
   margin-bottom: 0;
+}
+
+
+#pie-chart {
+  width: 50px;
+  height: 50px;
 }
